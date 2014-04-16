@@ -9,6 +9,10 @@ def read_lines(file_name, num_lines):
 	with open(file_name) as f:
 		lines = [line.strip('\n') for line in f]
 
+	# Correct max length
+	if (num_lines > len(lines)):
+		num_lines = len(lines)
+
 	lines = lines[0:num_lines-1]
 	print("Read the first "+str(num_lines)+" from "+file_name)
 	return lines
