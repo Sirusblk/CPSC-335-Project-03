@@ -23,12 +23,21 @@ def main():
 		file_name = sys.argv[1]
 		num_lines = int(sys.argv[2])
 
-	# Read in lines
-	data = read_lines(file_name, num_lines)
-
 	start = time.perf_counter()		# Start Counting
-	# Do something here...
+
+	# Read in lines & print head
+	data = read_lines(file_name, num_lines)
+	print("First 10 words: " + str(data[0:10]))
+
+	# Sort lines
+	selection_sort(data)
 	end = time.perf_counter()		# Stop Counting
+
+	# Print new head
+
+	# Print elapsed time
+	print("Elapsed time: " + str(end - start))
+
 
 if __name__ == '__main__':
 	# unittest.main()
