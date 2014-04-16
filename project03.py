@@ -14,6 +14,18 @@ def read_lines(file_name, num_lines):
 	return lines
 
 
+def selection_sort(data):
+	smallest = 0
+	for i in range(0, len(data)-1):
+		smallest = i
+		for j in range(i + 1, len(data)):
+			if (data[j] < data[smallest]):
+				smallest = j
+
+		if (smallest != i):
+			data[i], data[smallest] = data[smallest], data[i]
+
+
 ## MAIN ##
 def main():
 	if len(sys.argv) <= 2: 			# python3 project03.py
@@ -30,10 +42,12 @@ def main():
 	print("First 10 words: " + str(data[0:10]))
 
 	# Sort lines
+	print("Selection sort...")
 	selection_sort(data)
 	end = time.perf_counter()		# Stop Counting
 
 	# Print new head
+	print("First 10 words: " + str(data[0:10]))
 
 	# Print elapsed time
 	print("Elapsed time: " + str(end - start))
