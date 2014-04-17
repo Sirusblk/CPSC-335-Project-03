@@ -11,6 +11,7 @@ using namespace std;
 
 // PROTOTYPES
 vector<string> read_lines(string file_name, int count);
+void selection_sort(vector<string>& lines);
 
 // MAIN FUNCTION
 int main(int argc, char const *argv[])
@@ -44,8 +45,15 @@ int main(int argc, char const *argv[])
 	cout << "\']\n" << endl;
 
 	//Sort List
+	selection_sort(lines);
 
 	//Print Sorted Head
+	cout << "First 10 words: [\'" << lines[0];
+	for (int i = 1; i < 10; ++i)
+	{
+		cout << "\', \'" << lines[i];
+	}
+	cout << "\']\n" << endl;
 
 	//Stop Counting
 	auto end = chrono::high_resolution_clock::now();
@@ -76,4 +84,28 @@ vector<string> read_lines(string file_name, int count)
 	cout << "Read the first " << count << " lines from " << file_name << endl;
 
 	return list;
+}
+
+void selection_sort(vector<string>& lines)
+{
+	int smallest = 0;
+
+	cout << "Selection sort...\n";
+
+	for (int i = 0; i < lines.size()-1; ++i)
+	{
+		smallest = i;
+		for (int j = i; j < lines.size(); ++j)
+		{
+			if (lines[j] < lines[smallest])
+			{
+				smallest = j;
+			}
+		}
+
+		if (smallest != i)
+		{
+			swap(lines[i], lines[smallest]);
+		}	
+	}
 }
