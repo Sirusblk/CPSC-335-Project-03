@@ -46,7 +46,7 @@ def main():
 	print("First 10 words: " + str(data[0:10]))
 
 	# Sort lines
-	print("Selection sort...")
+	print("\nSelection sort...")
 	selection_sort(data)
 	end = time.perf_counter()		# Stop Counting
 
@@ -54,7 +54,8 @@ def main():
 	print("First 10 words: " + str(data[0:10]))
 
 	# Print elapsed time
-	print("Elapsed time: " + str(end - start))
+	diff = end - start
+	print("\nElapsed time:", format(diff, '.5f'), "seconds")
 
 
 if __name__ == '__main__':
