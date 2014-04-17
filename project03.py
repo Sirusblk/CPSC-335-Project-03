@@ -14,7 +14,7 @@ def read_lines(file_name, num_lines):
 		num_lines = len(lines)
 
 	lines = lines[0:num_lines-1]
-	print("Read the first "+str(num_lines)+" from "+file_name)
+	print("Read the first "+str(num_lines)+" lines from "+file_name)
 	return lines
 
 
