@@ -10,7 +10,7 @@
 using namespace std;
 
 // PROTOTYPES
-vector<string> read_lines(string file_name);
+vector<string> read_lines(string file_name, int count);
 
 // MAIN FUNCTION
 int main(int argc, char const *argv[])
@@ -33,9 +33,15 @@ int main(int argc, char const *argv[])
 	auto start = chrono::high_resolution_clock::now();
 
 	//Read in lines
-	auto lines = read_lines(file_name);
+	auto lines = read_lines(file_name, num_lines);
 
 	//Print Head
+	cout << "First 10 words: [\'" << lines[0];
+	for (int i = 1; i < 10; ++i)
+	{
+		cout << "\', \'" << lines[i];
+	}
+	cout << "\']\n" << endl;
 
 	//Sort List
 
@@ -51,9 +57,23 @@ int main(int argc, char const *argv[])
 }
 
 // FUNCTIONS
-vector<string> read_lines(string file_name)
+vector<string> read_lines(string file_name, int count)
 {
 	vector<string> list;
+	string temp;
+	ifstream infile;
+
+	infile.open(file_name);
+
+	for (int i = 0; i < count; ++i)
+	{
+		infile >> temp;
+		list.push_back(temp);
+	}
+
+	infile.close();
+
+	cout << "Read the first " << count << " lines from " << file_name << endl;
 
 	return list;
 }
