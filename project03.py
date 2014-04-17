@@ -1,6 +1,7 @@
 # Project 03
 # By: Maira Ahmad & David McLaren
 # Due: 04/18/14
+# Source: Professor Kevin Wortman, Class Notes
 import sys
 import time
 import random
@@ -35,18 +36,18 @@ def inplace_quick_sort(data):
 	inplace_quick_sort_range(data, 0, len(data))
 	return data
 
-def inplace_quick_sort_range(data, s, e):
-	if (e-s) > 1:
-		lt_end, gt_start = inplace_partition(data, s, e)
-		inplace_quick_sort_range(data, s, lt_end)
-		inplace_quick_sort_range(data, gt_start, e)
+def inplace_quick_sort_range(data, start, end):
+	if (end-start) > 1:
+		lt_end, gt_start = inplace_partition(data, start, end)
+		inplace_quick_sort_range(data, start, lt_end)
+		inplace_quick_sort_range(data, gt_start, end)
 
-def inplace_partition(data, s, e):
-	pivot = data[random.randint(s, e-1)]
+def inplace_partition(data, start, end):
+	pivot = data[random.randint(start, end-1)]
 
 	# first pass: partition L into LT, GE zones
-	lt_end = s
-	ge_start = e
+	lt_end = start
+	ge_start = end
 	while lt_end < ge_start:
 		if data[lt_end] < pivot:
 			lt_end += 1
@@ -58,7 +59,7 @@ def inplace_partition(data, s, e):
 
 # second pass: partition GE into EQ, GT zones
 	eq_end = lt_end
-	gt_start = e
+	gt_start = end
 	while eq_end < gt_start:
 		if data[eq_end] == pivot:
 			eq_end += 1
