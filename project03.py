@@ -88,6 +88,7 @@ def main():
 	
 	# Read in lines & print head
 	data = read_lines(file_name, num_lines)
+	data2 = data
 
 	print("First 10 words of " + file_name + ": "+ str(data[0:10]))
 
@@ -102,23 +103,21 @@ def main():
 
 	# Print elapsed time
 	diff = end - start
-	print("Elapsed time:", format(diff, '.5f'), "seconds")
-	print("\n")
+	print("Elapsed time:", format(diff, '.5f'), "seconds\n")
 
 	
 	start = time.perf_counter()	# Start Counting
 	# Sort lines
 	print("In-Place Randomized Quick sort...")
-	inplace_quick_sort(data)
+	inplace_quick_sort(data2)
 	end = time.perf_counter()	# Stop Counting
 
 	# Print new head
-	print("Sorted First 10 words of " + file_name + ": "+ str(data[0:10]))
+	print("Sorted First 10 words of " + file_name + ": "+ str(data2[0:10]))
 
 	# Print elapsed time
 	diff = end - start
-	print("Elapsed time:", format(diff, '.5f'), "seconds")
-	print("\n")
+	print("Elapsed time:", format(diff, '.5f'), "seconds\n")
 
 if __name__ == '__main__':
 # unittest.main()
